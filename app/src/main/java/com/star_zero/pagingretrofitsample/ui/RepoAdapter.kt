@@ -1,9 +1,9 @@
 package com.star_zero.pagingretrofitsample.ui
 
-import android.arch.paging.PagedListAdapter
-import android.databinding.DataBindingUtil
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
+import androidx.paging.PagedListAdapter
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.star_zero.pagingretrofitsample.R
@@ -20,7 +20,7 @@ class RepoAdapter : PagedListAdapter<Repo, RepoAdapter.ViewHolder>(DIFF_CALLBACK
         holder.bindTo(getItem(position))
     }
 
-    class ViewHolder(private val binding: ItemRepoBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemRepoBinding) : androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root) {
 
         fun bindTo(repo: Repo?) {
             binding.repo = repo

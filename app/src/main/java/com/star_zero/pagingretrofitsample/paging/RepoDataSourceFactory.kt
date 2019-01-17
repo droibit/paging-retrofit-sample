@@ -1,6 +1,6 @@
 package com.star_zero.pagingretrofitsample.paging
 
-import android.arch.paging.DataSource
+import androidx.paging.DataSource
 import com.star_zero.pagingretrofitsample.api.GitHubAPI
 import com.star_zero.pagingretrofitsample.data.Repo
 
