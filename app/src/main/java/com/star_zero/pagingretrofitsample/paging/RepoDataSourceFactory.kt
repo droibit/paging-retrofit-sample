@@ -6,9 +6,9 @@ import com.star_zero.pagingretrofitsample.data.Repo
 
 class RepoDataSourceFactory(api: GitHubAPI) : DataSource.Factory<Int, Repo>() {
 
-    val source = PageKeyedRepoDataSource(api)
+  val source = PageKeyedRepoDataSource(api)
 
-    override fun create(): DataSource<Int, Repo> {
-        return source
-    }
+  override fun create(): DataSource<Int, Repo> {
+    return source
+  }
 }

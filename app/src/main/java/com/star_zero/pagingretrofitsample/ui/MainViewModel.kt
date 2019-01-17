@@ -11,30 +11,30 @@ import com.star_zero.pagingretrofitsample.paging.RepoDataSourceFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
 
-    companion object {
-        private val PAGE_SIZE = 50
-    }
+  companion object {
+    private const val PAGE_SIZE = 50
+  }
 
-    val repos: LiveData<PagedList<Repo>>
+  val repos: LiveData<PagedList<Repo>>
 
-    val networkState: LiveData<NetworkState>
+  val networkState: LiveData<NetworkState>
 
-    init {
-        val retrofit = Retrofit.Builder()
-                .baseUrl("https://api.github.com")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-        val api = retrofit.create(GitHubAPI::class.java)
+  init {
+    val retrofit = Retrofit.Builder()
+        .baseUrl("https://api.github.com")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    val api = retrofit.create(GitHubAPI::class.java)
 
-        val factory = RepoDataSourceFactory(api)
-        val config = PagedList.Config.Builder()
-                .setInitialLoadSizeHint(PAGE_SIZE)
-                .setPageSize(PAGE_SIZE)
-                .build()
+    val factory = RepoDataSourceFactory(api)
+    val config = PagedList.Config.Builder()
+        .setInitialLoadSizeHint(PAGE_SIZE)
+        .setPageSize(PAGE_SIZE)
+        .build()
 
-        repos = LivePagedListBuilder(factory, config).build()
-        networkState = factory.source.networkState
-    }
+    repos = LivePagedListBuilder(factory, config).build()
+    networkState = factory.source.networkState
+  }
 }
